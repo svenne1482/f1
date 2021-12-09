@@ -5,38 +5,37 @@ import './App.css';
 
 function App() {
   const apiUrl = 'https://ergast.com/api/f1/'
-
   const [yearInput, SetYearInput] = useState();
+  const [raceSeasons, SetRaceSeasons] = useState({});
 
-  const apiRequest = async (e, year, round) => {
-    console.log(e);
+  const handleGetYear = async (e,year) =>
+  {
     e.preventDefault();
-
-    //do{
+    if(!raceSeasons[year]){
+      SetRaceSeasons({...raceSeasons, [year]: await getYear(year)});
+    }
+    console.log(raceSeasons);
+  }
+  const getYear = async (year) =>
+  {
+    let request = `${year}/results.json?limit=1000`
+    return await makeApiRequest(apiUrl, request) 
+  }
+  
+  const getSpecificRound = async (year, round) =>
+  {
     let request = `${year}/${round}/results.json`
-    let loop = true;
-    await axios.get(apiUrl + request)
-      .then(response => {
-        console.log(response.data);
-        console.log(response.status);
-        console.log(response.statusText);
-        console.log(response.headers);
-        console.log(response.config);
-        if(response.data.MRData.RaceTable.Races.length == 0)
-          loop = false;
-      })
-      .catch(error => {
-        loop = false;
-      })
+    return await makeApiRequest(apiUrl, request)
+  }
 
-    if (!loop)
-      return;
-    else
-      apiRequest(e, year, round + 1);
+  const makeApiRequest = async (url, request) => 
+  {
+    const response = await axios.get(url + request);
+    return response.data;
   }
 
   return (
-    <form onSubmit={(e) => apiRequest(e, yearInput, 0)}>
+    <form onSubmit={(e) => handleGetYear(e, yearInput)}>
       <input type="text" onChange={(e) => SetYearInput(e.target.value)} />
     </form>
   );
