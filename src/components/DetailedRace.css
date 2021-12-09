@@ -1,0 +1,29 @@
+.DetailedRace{
+    box-shadow: 0 0 10px;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1rem;
+    -webkit-animation: fade-in 0.4s;
+    -webkit-animation: expandX 0.4s;
+    border-radius: 1rem;
+}
+
+.DateName{
+    display: flex;
+    text-align: center;
+    justify-content: space-between;
+    width: 80%;
+    font-size: 1.5rem;
+}
+
+.Results{
+    box-shadow: 0 0 3px;
+    border-radius: 1rem;
+    height: 15rem;
+    overflow-y: auto;
+    width: 70%;
+    padding-left: 1rem;
+}
+

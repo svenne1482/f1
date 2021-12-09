@@ -1,0 +1,19 @@
+.Result{
+    display: flex;
+    justify-content: flex-start;
+}
+
+.Position{
+    display: flex;
+}
+
+.FullName{
+    display: flex;
+    align-items: center;
+}
+
+.Constructor{
+    display: flex;
+    align-items: center;
+}
+

@@ -1,0 +1,18 @@
+.Race{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 0 0.5rem;
+    padding: 0.5rem;
+    border-radius: 1rem;
+    width: 10rem;
+    margin: 0.5rem;
+    width: 20%;
+    transition: ease-in-out 200ms;
+    -webkit-animation: fade-in 0.4s;
+    -webkit-animation: expand 1s;
+}
+
+.Race-hover{
+    transform: scale(1.1);
+}
